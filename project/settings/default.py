@@ -30,6 +30,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS",'127.0.0.1').split(',')
 # Application definition
 
 INSTALLED_APPS = [
+  'apps.CVitae', # overriding some admin templates
   'django.contrib.admin',
   'django.contrib.auth',
   'django.contrib.contenttypes',
@@ -40,8 +41,6 @@ INSTALLED_APPS = [
   'rest_framework',
   'debug_toolbar',
   'apps.common',
-  # YOUR APPS HERE
-  'apps.CVitae',
 ]
 
 MIDDLEWARE = [

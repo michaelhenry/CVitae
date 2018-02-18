@@ -1,0 +1,1 @@
+web: sh entrypoint-heroku.sh

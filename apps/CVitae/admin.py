@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Job, Project, Company, Profile, Skill)
+from .models import (Job, Project, Company, Profile, Skill, Education)
 
 
 class ExcludeMetaInfo(object):
@@ -75,6 +75,14 @@ class SkillAdmin(OnlyShowOwnData, ExcludeMetaInfo, AutoSaveUserInfo, admin.Model
   list_display        =    ('name' ,'description',)
 
 
+class EducationAdmin(OnlyShowOwnData, ExcludeMetaInfo, AutoSaveUserInfo, admin.ModelAdmin):
+
+  fields              =    ('name_of_school','description', 'start_date', 'end_date',)
+  ordering            =    ('name_of_school',)
+  search_fields       =    ('name_of_school','description',)
+  list_display        =    ('name_of_school' ,'description',)
+
+
 class ProfileAdmin(admin.ModelAdmin):
 
   # Just a hack for now.
@@ -103,3 +111,4 @@ admin.site.register(Project, ProjectAdmin)
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Skill, SkillAdmin)
+admin.site.register(Education, EducationAdmin)

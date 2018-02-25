@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import (Job, Project, Company, Profile, Skill)
+from .models import (Job, Project, Company, Profile, Skill, Education)
 
 class JobSerializer(serializers.ModelSerializer):
 
@@ -50,6 +50,19 @@ class SkillSerializer(serializers.ModelSerializer):
 			'description',
       'level',
 			)
+
+
+class EducationSerializer(serializers.ModelSerializer):
+
+  class Meta:
+    model = Education
+    fields = (
+      'id', 
+      'name_of_school', 
+      'description',
+      'start_date',
+      'end_date',
+      )
 
 
 class ProfileSerializer(serializers.ModelSerializer):

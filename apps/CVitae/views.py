@@ -5,13 +5,15 @@ from .models import (
   Project, 
   Company, 
   Profile, 
-  Skill)
+  Skill,
+  Education,)
 from .serializers import (
   JobSerializer, 
   ProjectSerializer, 
   CompanySerializer, 
   ProfileSerializer, 
-  SkillSerializer)
+  SkillSerializer,
+  EducationSerializer,)
 
 
 class JobViewSet(CVitaeViewsetBasicsMixin, viewsets.ModelViewSet):
@@ -44,6 +46,14 @@ class SkillViewSet(CVitaeViewsetBasicsMixin, viewsets.ModelViewSet):
 
   def get_queryset(self):
     return Skill.objects.filter(created_by__username=self.get_username())
+
+
+class EducationViewSet(CVitaeViewsetBasicsMixin, viewsets.ModelViewSet):
+  
+  serializer_class = EducationSerializer
+
+  def get_queryset(self):
+    return Education.objects.filter(created_by__username=self.get_username())
 
 
 class ProfileViewSet(CVitaeViewsetBasicsMixin, viewsets.ModelViewSet):
@@ -99,6 +109,18 @@ skill_list_view = SkillViewSet.as_view({
 })
 
 skill_detail_view = SkillViewSet.as_view({
+  'get'   :   'retrieve',
+  'put'   :   'update',
+  'patch' :   'partial_update',
+  'delete':   'destroy',
+})
+
+education_list_view = EducationViewSet.as_view({
+  'get' : 'list',
+  'post' : 'create',
+})
+
+education_detail_view = EducationViewSet.as_view({
   'get'   :   'retrieve',
   'put'   :   'update',
   'patch' :   'partial_update',

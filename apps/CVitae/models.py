@@ -68,6 +68,18 @@ class Skill(CVitaeBaseModel):
   level = models.IntegerField(null=True, blank=True)
 
 
+class Education(HasOwnershipInfoModel, HasDateRange, models.Model):
+
+  name_of_school  =  models.CharField(max_length=50)
+  description     =  models.TextField(max_length=200, blank=True, null=True)
+
+  def __str__(self):
+    return "%s" % self.name_of_school
+
+  def __unicode__(self):
+    return '%s' % self.name_of_school
+
+
 class Profile(models.Model):
   created_by    = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
   display_name  = models.CharField(max_length=50)

@@ -14,6 +14,8 @@ from apps.CVitae.views import (
   company_detail_view,
   skill_list_view,
   skill_detail_view,
+  education_list_view,
+  education_detail_view,
   profile_view,
   )
 
@@ -37,6 +39,8 @@ urlpatterns += [
   path('v1/u/<slug:username>/companies/<int:pk>', company_detail_view, name='company-detail'),
   path('v1/u/<slug:username>/projects', project_list_view, name='project-list'),
   path('v1/u/<slug:username>/projects/<int:pk>', project_detail_view, name='project-detail'),
+  path('v1/u/<slug:username>/education', education_list_view, name='education-list'),
+  path('v1/u/<slug:username>/education/<int:pk>', education_detail_view, name='education-detail'),
   path('v1/u/<slug:username>/', profile_view, name='profile'),
 ]
 
